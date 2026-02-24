@@ -1,6 +1,6 @@
 name: Build Finansys APK
 on:
-  workflow_dispatch: # Permite que você inicie o build manualmente com um clique
+  workflow_dispatch: # Permite iniciar manualmente na aba Actions
 
 jobs:
   android-build:
@@ -16,6 +16,9 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
+
+      - name: Prebuild Android # O "pulo do gato" está aqui!
+        run: npx expo prebuild --platform android --no-install
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
